@@ -1,0 +1,40 @@
+.button-add-new {
+    background-color: #D9A53B;
+    border: none;
+    padding: 10px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.button-add-new-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-add-new span {
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 35em) {
+    .button-add-new {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 100%;
+      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.705);
+      font-size: 30px;
+      margin: 0;
+      z-index: 100;
+    }
+
+    .button-add-new span {
+        display: none;
+    }
+  }
+  

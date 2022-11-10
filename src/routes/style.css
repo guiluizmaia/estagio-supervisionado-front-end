@@ -1,0 +1,21 @@
+.content {
+    height: 100%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-simple {
+    height: 100%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+}
+
+.content-title {
+    margin: 1rem auto;
+    text-align: center;
+    color: #04050D;
+}

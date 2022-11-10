@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 10px;
+    table-layout: fixed;
+    color: white;
+    background: rgba(4, 5, 13, 0.8);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+  }
+
+thead {
+    border-bottom: 2px solid #D9A53B;
+    padding: 10px;
+}
+
+td {
+  padding: 1rem 0.5rem;
+  table-layout: fixed;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+tr:hover {
+  background: rgba(4, 5, 13, 0.6);
+}
+
+th {
+    padding: 0.5rem;
+    max-width: 40px;
+}
+
+.hl-row {
+  font-weight: 700;
+  border-top: 0.25px solid rgba(255, 255, 255, 0.3);
+}

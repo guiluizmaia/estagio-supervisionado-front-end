@@ -1,0 +1,64 @@
+.user-card {
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(4, 5, 13, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 35em) {
+    .user-card {
+        flex-grow: 1;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 35em) {
+    .button {
+        flex-grow: 1;
+    }
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #D9A53B;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+
+.card-row__end {
+    justify-content: flex-end;
+}
+
+
+.card-label {
+    font-size: 10px;
+}
+
+.button {
+    border-radius: 5px;
+    border: none;
+    padding: 0.25rem 1rem;
+}
+
+.button__edit {
+    color: #38A169;
+}
+
+.button__delete {
+    color: #E53E3E;
+}

@@ -1,0 +1,51 @@
+body {
+  background-color: #FFF6EC;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container, .container-full {
+  display: grid;
+  grid-template-columns: 280px repeat(3, 1fr);
+  grid-template-rows: 60px calc(100vh - 60px);
+  grid-template-areas: 
+    "h h h h"
+    "m c c c";
+}
+
+.container {
+  grid-template-areas: 
+    "h h h h"
+    "m c c c";
+}
+
+.container-full {
+  grid-template-areas: 
+    "h h h h"
+    "c c c c";
+}
+
+main {
+  grid-area: c;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+@media (max-width: 35em) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "h"
+      "c"; 
+  }
+}
+
+
+
+/* * {
+  outline: 1px solid red;
+} */

@@ -1,0 +1,23 @@
+.pagination__container {
+    margin: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pagination__index {
+    border: none;
+    background-color: transparent;
+    border-radius: 100%;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+}
+
+.pagination__index-active {
+    outline: 2px solid #D9A53B;
+}
+
+.pagination__index > i {
+    font-size: 12px;
+}

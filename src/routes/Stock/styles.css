@@ -1,0 +1,27 @@
+.dates-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-block: 1rem;
+    width: 100%;
+}
+
+@media (max-width: 35em) {
+    .dates-filter {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .dates-filter__group {
+        width: 100%;
+    }
+}
+
+.dates-filter__group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}

@@ -1,0 +1,35 @@
+.toggle-button {
+  width: 4rem;
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle-button__line,
+.toggle-button__line::after,
+.toggle-button__line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: block;
+  text-indent: -9999px;
+  background-color: #D9A53B;
+  height: .2rem;
+  width: 100%;
+  transition: background-color .3s ease-in-out, transform .5s ease-in-out, top .5s ease-in-out;
+}
+
+.toggle-button__line {
+  top: 0.75rem;
+  width: 2.5rem;
+  margin-left: 0.5rem;
+}
+
+.toggle-button__line::before {
+  top: 0.75rem;
+}
+.toggle-button__line::after {
+  top: 1.5rem;
+}
