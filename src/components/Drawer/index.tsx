@@ -36,11 +36,7 @@ const Drawer: React.FC<{
       icon: 'bi bi-cart4',
       link: '/vendas',
     },
-    {
-      text: 'Relatórios',
-      icon: 'bi bi-bar-chart-line',
-      link: '/relatorios',
-    },
+
     {
       text: 'Estoque',
       icon: 'bi bi-boxes',
@@ -73,6 +69,12 @@ const Drawer: React.FC<{
       text: 'Usuários',
       icon: 'bi bi-person-badge',
       link: '/usuarios',
+    });
+
+    menuOptions.splice(menuOptions.length - 1, 0, {
+      text: 'Relatórios',
+      icon: 'bi bi-bar-chart-line',
+      link: '/relatorios',
     });
   }
 
