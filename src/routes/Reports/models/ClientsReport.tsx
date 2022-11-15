@@ -81,23 +81,32 @@ const ClientsReport: React.FC<{ items: ReportClients[] }> = ({ items }) => {
       <br></br>
       {!!sortedClients && (
         <Table
-          items={sortedClients.map((client) => ({
-            id: client.clientId,
-            name: client.name,
-            qntdSale: client.salesQuantInPeriod,
-            total: currency(client.valuePayInPeriod),
-            lastSale: new Date(client.lastSaleDateInPeriod).toLocaleDateString(
-              'pt-BR',
-            ),
-            timeRegistered: new Date(client.initDate).toLocaleDateString(
-              'pt-BR',
-            ),
-            status: !client.exclude
-              ? 'ATIVO'
-              : `EXLUÍDO EM ${new Date(
-                  client.excludeDate ?? '',
-                ).toLocaleDateString('pt-BR')}`,
-          }))}
+          items={sortedClients.map((client) => 
+            {
+              let lastSale = '-'
+              if(client.lastSaleDateInPeriod){
+                lastSale = new Date(client.lastSaleDateInPeriod).toLocaleDateString(
+                  'pt-BR',
+                )
+              }
+              return {
+                id: client.clientId,
+                name: client.name,
+                qntdSale: client.salesQuantInPeriod,
+                total: currency(client.valuePayInPeriod),
+                lastSale: lastSale,
+                timeRegistered: new Date(client.initDate).toLocaleDateString(
+                  'pt-BR',
+                ),
+                status: !client.exclude
+                  ? 'ATIVO'
+                  : `EXLUÍDO EM ${new Date(
+                      client.excludeDate ?? '',
+                    ).toLocaleDateString('pt-BR')}`,
+              }
+            }
+            )
+          }
           headers={{
             id: 'id',
             name: 'Nome',

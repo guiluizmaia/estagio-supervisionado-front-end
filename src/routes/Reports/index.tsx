@@ -26,9 +26,9 @@ const ReportsScreen = () => {
   } = useReports();
 
   const typeOptions: { value: ReportType; label: string }[] = [
-    { value: 'clients', label: 'Vendas por cliente' },
+    { value: 'clients', label: 'Clientes' },
     { value: 'sales', label: 'Vendas' },
-    { value: 'products', label: 'Produtos' },
+    { value: 'products', label: 'Produtos vendas' },
   ];
 
   const isProduct = (data: object[]): data is ReportProducts[] => {
