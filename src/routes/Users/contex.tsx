@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { IPaginatedResponse } from '../../types/global';
 import {
@@ -82,18 +83,28 @@ export const UsersProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   const deleteUser = async (id: string) => {
-    try {
-      const response = await api.delete(`/user/${id}`);
-      if (response.data.ok === 'ok') {
-        setUsers(users.filter((user) => user.id !== id));
+    toast.promise(
+      async () => {
+        const response = await api.delete(`/user/${id}`);
+        if (response.data.ok === 'ok') {
+          setUsers(users.filter((user) => user.id !== id));
+        }
+      },
+      {
+        pending: 'Excluindo usuário...',
+        success: {
+          render: () => {
+            return 'Usuário excluido!';
+          },
+        },
+        error: {
+          render: () => {
+            return 'Erro ao excluir usuário :/';
+          },
+        },
       }
-    } catch (err) {
-      if (err instanceof AxiosError) {
-        console.log(err.response?.data);
-      } else {
-        console.log(err);
-      }
-    }
+    )
+
   };
 
   useEffect(() => {

@@ -8,4 +8,5 @@ export type ClientInput = {
     value: string;
   }[];
   address: AddressInput | null;
+  exclude: boolean
 };

@@ -47,6 +47,7 @@ const StockProductForm: React.FC<{
                 value: prod.id,
                 label: prod.name,
               }))}
+              noOptionsMessage={() => 'Nenhum Produto Cadastrado'}
               value={products
                 .map((prod) => ({
                   value: prod.id,

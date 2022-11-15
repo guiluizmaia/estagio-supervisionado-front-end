@@ -31,7 +31,7 @@ const PaymentMethodsScreen = () => {
 
   return (
     <div className='content-simple'>
-      <h1 className='content-title'>Produtos</h1>
+      <h1 className='content-title'>Forma de pagamento</h1>
       <div className='button-add-new-row'>
         <button className='button-add-new' onClick={() => toggleShowForm(true)}>
           <i className='bi bi-person-plus'></i>

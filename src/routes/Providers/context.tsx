@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { IPaginatedResponse } from '../../types/global';
 import {
@@ -97,21 +98,31 @@ export const ProvidersProvider: React.FC<PropsWithChildren> = ({
   };
 
   const handleExcludeProvider = async (providerId: string) => {
-    try {
-      console.log(providerId);
-      const response = await api.patch<Provider>('/providers', {
-        id: providerId,
-        exclude: true,
-      });
-      console.log(response.data);
-      setProviders(
-        providers.filter((provider) => provider.id !== response.data.id),
-      );
-    } catch (err) {
-      const message =
-        err instanceof AxiosError ? err.response?.data.message : err;
-      throw new Error(message);
-    }
+    toast.promise(
+      async () => {
+        const response = await api.patch<Provider>('/providers', {
+          id: providerId,
+          exclude: true,
+        });
+        console.log(response.data);
+        setProviders(
+          providers.filter((provider) => provider.id !== response.data.id),
+        );
+      },
+      {
+        pending: 'Excluindo Fornecedor...',
+        success: {
+          render: () => {
+            return 'Fornecedor excluido!';
+          },
+        },
+        error: {
+          render: () => {
+            return 'Erro ao excluir Fornecedor :/';
+          },
+        },
+      }
+    )
   };
 
   useEffect(() => {

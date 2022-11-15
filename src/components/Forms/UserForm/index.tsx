@@ -146,6 +146,7 @@ const UserForm: React.FC<{ user?: User }> = ({ user }) => {
                       value: perm.id,
                       label: perm.permission,
                     }))}
+                    noOptionsMessage={() => 'Nenhuma Permissão Cadastrada'}
                     value={permissions
                       .map((perm) => ({
                         value: perm.id,

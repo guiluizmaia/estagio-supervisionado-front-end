@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { IPaginatedResponse } from '../../types/global';
 import { Provider } from '../Providers/types';
@@ -65,6 +66,7 @@ export const ProductsProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const fetchProviders = async () => {
     try {
       const response = await api.get<Provider[]>(`/providers?all=true`);
+      console.log(response.data)
       setProviders(response.data);
     } catch (err) {
       console.log(err);
@@ -100,21 +102,31 @@ export const ProductsProvider: React.FC<PropsWithChildren> = ({ children }) => {
     }
   };
   const handleIncativateProduct = async (productId: string) => {
-    try {
-      console.log(productId);
-      const response = await api.patch<Product>('/products', {
-        id: productId,
-        exclude: true,
-      });
-      console.log(response.data);
-      setProducts(
-        products.filter((product) => product.id !== response.data.id),
-      );
-    } catch (err) {
-      const message =
-        err instanceof AxiosError ? err.response?.data.message : err;
-      throw new Error(message);
-    }
+    toast.promise(
+      async () => {
+        const response = await api.patch<Product>('/products', {
+          id: productId,
+          exclude: true,
+        });
+
+        setProducts(
+          products.filter((product) => product.id !== response.data.id),
+        );
+      },
+      {
+        pending: 'Excluindo Produto...',
+        success: {
+          render: () => {
+            return 'Produto excluido!';
+          },
+        },
+        error: {
+          render: () => {
+            return 'Erro ao excluir Produto :/';
+          },
+        },
+      }
+    )
   };
 
   useEffect(() => {

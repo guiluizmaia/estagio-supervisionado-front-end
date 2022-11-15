@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { IPaginatedResponse } from '../../types/global';
 import {
@@ -91,18 +92,30 @@ export const PaymentMethodsProvider: React.FC<PropsWithChildren> = ({
     }
   };
   const handleDeletePaymentMethod = async (paymentMethodId: string) => {
-    try {
-      await api.delete(`/form-payments/${paymentMethodId}`);
-      setPaymentMethods(
-        paymentMethods.filter(
-          (paymentMethod) => paymentMethod.id !== paymentMethodId,
-        ),
-      );
-    } catch (err) {
-      const message =
-        err instanceof AxiosError ? err.response?.data.message : err;
-      throw new Error(message);
-    }
+    toast.promise(
+      async () => {
+        await api.delete(`/form-payments/${paymentMethodId}`);
+        setPaymentMethods(
+          paymentMethods.filter(
+            (paymentMethod) => paymentMethod.id !== paymentMethodId,
+          ),
+        );
+      },
+      {
+        pending: 'Excluindo Forma de Pagamento...',
+        success: {
+          render: () => {
+            return 'Forma de Pagamento excluida!';
+          },
+        },
+        error: {
+          render: () => {
+            return 'Erro ao excluir uma Forma de Pagamento :/';
+          },
+        },
+      }
+    )
+
   };
 
   useEffect(() => {

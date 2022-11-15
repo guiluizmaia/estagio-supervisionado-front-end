@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 import { ClientInput } from '../../components/Forms/ClientForm/types';
 import api from '../../services/api';
 import { IPaginatedResponse } from '../../types/global';
@@ -114,19 +115,29 @@ export const ClientsProvider: React.FC<PropsWithChildren> = ({ children }) => {
     }
   };
   const handleExcludeClient = async (clientId: string) => {
-    try {
-      console.log(clientId);
-      const response = await api.patch<Client>('/clients', {
-        id: clientId,
-        exclude: true,
-      });
-      console.log(response.data);
-      setClients(clients.filter((client) => client.id !== response.data.id));
-    } catch (err) {
-      const message =
-        err instanceof AxiosError ? err.response?.data.message : err;
-      throw new Error(message);
-    }
+    toast.promise(
+      async () => {
+        const response = await api.patch<Client>('/clients', {
+          id: clientId,
+          exclude: true,
+        });
+        
+        setClients(clients.filter((client) => client.id !== response.data.id));
+      },
+      {
+        pending: 'Excluindo cliente...',
+        success: {
+          render: () => {
+            return 'Cliente excluido!';
+          },
+        },
+        error: {
+          render: () => {
+            return 'Erro ao excluir cliente :/';
+          },
+        },
+      }
+    )
   };
 
   useEffect(() => {

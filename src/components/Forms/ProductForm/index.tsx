@@ -122,10 +122,14 @@ const ProductForm: React.FC<{ product?: Product; readOnly?: boolean }> = ({
                       },
                     })}
                     isDisabled={readOnly}
-                    options={providers.map((prov) => ({
-                      value: prov.id,
-                      label: prov.name,
-                    }))}
+                    options={
+                      providers.map((prov) => ({
+                          value: prov.id,
+                          label: prov.name,
+                        })
+                      )
+                    }
+                    noOptionsMessage={() => 'Nenhum Fornecedor Cadastrado'}
                     value={providers
                       .map((prov) => ({
                         value: prov.id,

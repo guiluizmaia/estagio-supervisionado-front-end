@@ -44,6 +44,7 @@ const FilterComponent: React.FC = () => {
               value: client.id,
               label: client.name,
             }))}
+            noOptionsMessage={() => 'Nenhum Cliente Cadastrado'}
             value={
               clients
                 .map((client) => ({
@@ -79,6 +80,7 @@ const FilterComponent: React.FC = () => {
               value: user.id,
               label: user.name,
             }))}
+            noOptionsMessage={() => 'Nenhum Usuário Cadastrado'}
             value={
               users
                 .map((user) => ({
@@ -127,6 +129,7 @@ const FilterComponent: React.FC = () => {
                   : undefined,
               );
             }}
+            noOptionsMessage={() => 'Nenhuma Forma de Pagamento Cadastrada'}
             placeholder='Selecionar forma de pagamento...'
           />
         );

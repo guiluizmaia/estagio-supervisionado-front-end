@@ -169,6 +169,7 @@ const NewSaleForm: React.FC = () => {
                         }))
                         .find((p) => p.value === value) ?? null
                     }
+                    noOptionsMessage={() => 'Nenhum Cliente Cadastrado'}
                     onChange={(val) => {
                       onChange(val?.value);
                     }}
@@ -210,6 +211,7 @@ const NewSaleForm: React.FC = () => {
                           value: prod.id,
                           label: `R$ ${prod.qntd} - ${prod.name}`,
                         }))}
+                      noOptionsMessage={() => 'Nenhum Produto Cadastrado'}
                       value={
                         products
                           .map((prod) => ({
@@ -350,6 +352,7 @@ const NewSaleForm: React.FC = () => {
                               value: pm.id,
                               label: pm.formPayment,
                             }))}
+                            noOptionsMessage={() => 'Nenhuma Forma de Pagamento Cadastrada'}
                             value={
                               paymentMethods
                                 .map((pm) => ({
