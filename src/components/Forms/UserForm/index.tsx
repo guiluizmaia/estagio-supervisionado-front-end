@@ -80,13 +80,13 @@ const UserForm: React.FC<{ user?: User }> = ({ user }) => {
     if (!user) {
       toast.promise(createUser(data), {
         pending: 'Aguardando...',
-        success: 'Cadastrando usuário',
+        success: 'Usuário Cadastrado',
         error: 'Erro ao cadastrar usuário',
       });
     } else {
       toast.promise(confirmEditUser(data), {
         pending: 'Aguardando...',
-        success: 'Editando usuário',
+        success: 'Usuário Editado',
         error: 'Erro ao editar usuário',
       });
     }
